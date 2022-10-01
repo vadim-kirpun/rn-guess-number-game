@@ -1,20 +1,21 @@
 import * as eva from '@eva-design/eva';
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-  Text,
-} from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
-const App = () => (
-  <ApplicationProvider {...eva} theme={eva.dark}>
-    <IconRegistry icons={EvaIconsPack} />
+import theme from './theme.json';
+import Start from './src/screens/Start';
+import AppContainer from './src/components/AppContainer';
 
-    <Layout style={{ flex: 1 }}>
-      <Text category="h1">Home</Text>
-    </Layout>
-  </ApplicationProvider>
-);
+const App = () => {
+  return (
+    <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
+      <IconRegistry icons={EvaIconsPack} />
+
+      <AppContainer>
+        <Start />
+      </AppContainer>
+    </ApplicationProvider>
+  );
+};
 
 export default App;
