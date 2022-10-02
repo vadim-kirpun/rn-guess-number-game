@@ -1,5 +1,6 @@
 import { memo, PropsWithChildren } from 'react';
 import { ImageBackground, SafeAreaView } from 'react-native';
+
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTheme } from '@ui-kitten/components';
 

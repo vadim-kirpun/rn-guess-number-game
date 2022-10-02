@@ -1,16 +1,20 @@
 import { memo, useState } from 'react';
 import { Alert, TextInput, View } from 'react-native';
+
 import { Button, useStyleSheet } from '@ui-kitten/components';
+
 import themedStyles from './Start.styles';
 
-const Start = () => {
+interface IStart {
+  onConfirm: (chosenNumber: number) => void;
+}
+
+const Start = ({ onConfirm }: IStart) => {
   const [enteredNumber, setEnteredNumber] = useState('');
 
   const styles = useStyleSheet(themedStyles);
 
-  const onChangeText = (value: string) => {
-    setEnteredNumber(value);
-  };
+  const onChangeText = (value: string) => setEnteredNumber(value);
 
   const reset = () => setEnteredNumber('');
 
@@ -27,7 +31,7 @@ const Start = () => {
       return;
     }
 
-    console.log('> hi');
+    onConfirm(chosenNumber);
   };
 
   const disabled = enteredNumber.trim().length === 0;
