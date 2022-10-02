@@ -15,8 +15,21 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react'],
+  plugins: ['react', 'eslint-plugin-import-helpers'],
   rules: {
+    'import-helpers/order-imports': [
+      2,
+      {
+        groups: [
+          '/^react/',
+          'module',
+          '/^~/',
+          ['parent', 'sibling', 'index'],
+          '/.styles$/',
+        ],
+        newlinesBetween: 'always',
+      },
+    ],
     '@typescript-eslint/explicit-function-return-type': 0,
   },
 };
