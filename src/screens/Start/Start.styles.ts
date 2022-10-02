@@ -3,19 +3,24 @@ import { StyleSheet } from 'react-native';
 const themedStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingTop: 16,
   },
   form: {
-    margin: 16,
+    marginTop: 32,
     padding: 16,
+    alignItems: 'center',
     borderRadius: 8,
     backgroundColor: 'color-primary-900',
     shadowColor: 'black',
     shadowOffset: { width: 1, height: 1 },
     shadowRadius: 6,
     shadowOpacity: 0.5,
+    width: '100%',
   },
   input: {
+    marginTop: 16,
     marginBottom: 32,
     borderBottomWidth: 2,
     height: 50,

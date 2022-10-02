@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import { Alert, TextInput, View } from 'react-native';
 
-import { Button, useStyleSheet } from '@ui-kitten/components';
+import { Button, Text, useStyleSheet } from '@ui-kitten/components';
 
 import themedStyles from './Start.styles';
 
@@ -38,13 +38,20 @@ const Start = ({ onConfirm }: IStart) => {
 
   return (
     <View style={styles.container}>
+      <Text category="h1">Guess My Number</Text>
+
       <View style={styles.form}>
+        <Text category="h5" appearance="alternative">
+          Enter a number
+        </Text>
+
         <TextInput
           value={enteredNumber}
           onChangeText={onChangeText}
           keyboardType="number-pad"
           style={styles.input}
           maxLength={2}
+          autoFocus
         />
 
         <View style={styles.buttons}>
