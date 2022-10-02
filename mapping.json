@@ -1,0 +1,11 @@
+{
+  "components": {},
+  "strict": {
+    "text-font-family": "Montserrat_400Regular",
+    "text-heading-1-font-family": "Montserrat_700Bold",
+    "text-heading-2-font-family": "Montserrat_700Bold",
+    "text-heading-3-font-family": "Montserrat_700Bold",
+    "text-heading-4-font-family": "Montserrat_700Bold",
+    "text-heading-5-font-family": "Montserrat_700Bold"
+  }
+}
