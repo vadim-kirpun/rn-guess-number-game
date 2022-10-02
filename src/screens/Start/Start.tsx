@@ -37,23 +37,25 @@ const Start = ({ onConfirm }: IStart) => {
   const disabled = enteredNumber.trim().length === 0;
 
   return (
-    <View style={styles.form}>
-      <TextInput
-        value={enteredNumber}
-        onChangeText={onChangeText}
-        keyboardType="number-pad"
-        style={styles.input}
-        maxLength={2}
-      />
+    <View style={styles.container}>
+      <View style={styles.form}>
+        <TextInput
+          value={enteredNumber}
+          onChangeText={onChangeText}
+          keyboardType="number-pad"
+          style={styles.input}
+          maxLength={2}
+        />
 
-      <View style={styles.buttons}>
-        <Button onPress={reset} style={styles.reset} disabled={disabled}>
-          Reset
-        </Button>
+        <View style={styles.buttons}>
+          <Button onPress={reset} style={styles.reset} disabled={disabled}>
+            Reset
+          </Button>
 
-        <Button onPress={confirm} style={{ flex: 1 }} disabled={disabled}>
-          Confirm
-        </Button>
+          <Button onPress={confirm} style={{ flex: 1 }} disabled={disabled}>
+            Confirm
+          </Button>
+        </View>
       </View>
     </View>
   );

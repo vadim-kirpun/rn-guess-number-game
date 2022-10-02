@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const themedStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   form: {
     margin: 16,
     padding: 16,

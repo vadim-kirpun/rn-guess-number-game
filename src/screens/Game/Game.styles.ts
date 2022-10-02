@@ -13,6 +13,10 @@ const themedStyles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 24,
   },
+  higherOrLower: {
+    marginTop: 32,
+    alignItems: 'center',
+  },
 });
 
 export default themedStyles;
