@@ -19,17 +19,30 @@ import mapping from './mapping.json';
 void SplashScreen.preventAutoHideAsync();
 
 const App = () => {
+  const [rounds, setRounds] = useState(0);
   const [userNumber, setUserNumber] = useState<number | null>(null);
   const [isGameOver, setIsGameOver] = useState(false);
 
   const [fontsLoaded] = useFonts({ Montserrat_400Regular, Montserrat_700Bold });
 
-  const onFinish = () => setIsGameOver(true);
+  const onFinish = (rounds: number) => {
+    setIsGameOver(true);
+    setRounds(rounds);
+  };
+
+  const resetGame = () => {
+    setRounds(0);
+    setUserNumber(null);
+    setIsGameOver(false);
+  };
 
   let screen = <Start onConfirm={setUserNumber} />;
-  if (userNumber !== null)
+  if (userNumber != null)
     screen = <Game userNumber={userNumber} onFinish={onFinish} />;
-  if (isGameOver) screen = <GameOver />;
+  if (isGameOver && userNumber != null)
+    screen = (
+      <GameOver userNumber={userNumber} rounds={rounds} resetGame={resetGame} />
+    );
 
   useEffect(() => {
     if (fontsLoaded) void SplashScreen.hideAsync();

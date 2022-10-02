@@ -17,12 +17,13 @@ import themedStyles from './Game.styles';
 
 interface IGame {
   userNumber: number;
-  onFinish: () => void;
+  onFinish: (rounds: number) => void;
 }
 
 const Game = ({ userNumber, onFinish }: IGame) => {
   const min = useRef(1);
   const max = useRef(100);
+  const rounds = useRef(0);
 
   const [currentGuess, setCurrentGuess] = useState(
     generateRandomNumber(min.current, max.current, userNumber)
@@ -49,7 +50,9 @@ const Game = ({ userNumber, onFinish }: IGame) => {
       currentGuess
     );
 
-    if (newGuess === userNumber) onFinish();
+    rounds.current += 1;
+
+    if (newGuess === userNumber) onFinish(rounds.current);
     else setCurrentGuess(newGuess);
   };
 

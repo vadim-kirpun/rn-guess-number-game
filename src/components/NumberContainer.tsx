@@ -17,6 +17,7 @@ const NumberContainer = ({ children }: PropsWithChildren<any>) => {
 
 const themedStyles = StyleSheet.create({
   container: {
+    width: 140,
     borderWidth: 4,
     borderRadius: 8,
     borderColor: 'color-primary-500',
