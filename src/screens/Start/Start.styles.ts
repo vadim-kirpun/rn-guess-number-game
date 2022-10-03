@@ -4,8 +4,7 @@ const themedStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingTop: 16,
+    marginHorizontal: 16,
   },
   form: {
     marginTop: 32,
