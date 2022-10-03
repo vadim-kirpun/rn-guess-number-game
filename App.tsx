@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
@@ -56,8 +57,10 @@ const App = () => {
       theme={{ ...eva.light, ...theme }}
       customMapping={mapping}
     >
-      <IconRegistry icons={EvaIconsPack} />
-      <AppContainer>{screen}</AppContainer>
+      <SafeAreaProvider>
+        <IconRegistry icons={EvaIconsPack} />
+        <AppContainer>{screen}</AppContainer>
+      </SafeAreaProvider>
     </ApplicationProvider>
   );
 };

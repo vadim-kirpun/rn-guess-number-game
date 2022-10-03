@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const themedStyles = StyleSheet.create({
   container: {
-    paddingTop: 16,
     paddingHorizontal: 16,
     alignItems: 'center',
+    flex: 1,
   },
   title: {
     marginBottom: 16,
@@ -15,6 +15,16 @@ const themedStyles = StyleSheet.create({
   },
   higherOrLower: {
     marginTop: 32,
+    alignItems: 'center',
+  },
+  roundsContainer: {
+    backgroundColor: 'transparent',
+    width: '100%',
+    marginTop: 32,
+  },
+  logItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 });

@@ -1,5 +1,5 @@
 import { memo, PropsWithChildren } from 'react';
-import { ImageBackground, SafeAreaView } from 'react-native';
+import { ImageBackground } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTheme } from '@ui-kitten/components';
@@ -17,7 +17,7 @@ const AppContainer = ({ children }: PropsWithChildren) => {
         imageStyle={{ opacity: 0.1 }}
         style={{ flex: 1 }}
       >
-        <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>
+        {children}
       </ImageBackground>
     </LinearGradient>
   );

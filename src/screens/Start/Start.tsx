@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { Alert, TextInput, View } from 'react-native';
+import { Alert, SafeAreaView, TextInput, View } from 'react-native';
 
 import { Button, Text, useStyleSheet } from '@ui-kitten/components';
 
@@ -37,8 +37,10 @@ const Start = ({ onConfirm }: IStart) => {
   const disabled = enteredNumber.trim().length === 0;
 
   return (
-    <View style={styles.container}>
-      <Text category="h1">Guess My Number</Text>
+    <SafeAreaView style={styles.container}>
+      <Text category="h1" style={{ marginTop: 16 }}>
+        Guess My Number
+      </Text>
 
       <View style={styles.form}>
         <Text category="h5" appearance="alternative">
@@ -64,7 +66,7 @@ const Start = ({ onConfirm }: IStart) => {
           </Button>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

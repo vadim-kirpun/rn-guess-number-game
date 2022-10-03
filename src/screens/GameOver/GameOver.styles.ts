@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
-const imageSide = Dimensions.get('window').width * 0.8;
+const imageSide = Dimensions.get('window').width * 0.7;
 
 const themedStyles = StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ const themedStyles = StyleSheet.create({
     marginVertical: 24,
     width: imageSide,
     height: imageSide,
-    borderRadius: 200,
+    borderRadius: imageSide / 2,
     borderWidth: 3,
     borderColor: 'color-primary-500',
     overflow: 'hidden',
