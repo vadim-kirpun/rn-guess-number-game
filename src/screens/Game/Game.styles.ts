@@ -2,9 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const themedStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
     alignItems: 'center',
     flex: 1,
+  },
+  landscapeActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
     marginBottom: 16,

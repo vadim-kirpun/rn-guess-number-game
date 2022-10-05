@@ -14,8 +14,9 @@ import {
 import { Start, Game, GameOver } from '~screens';
 import { AppContainer } from '~components';
 
-import theme from './theme.json';
+import { useIsLandscape } from './src/hooks';
 import mapping from './mapping.json';
+import theme from './theme.json';
 
 void SplashScreen.preventAutoHideAsync();
 
@@ -25,6 +26,7 @@ const App = () => {
   const [isGameOver, setIsGameOver] = useState(false);
 
   const [fontsLoaded] = useFonts({ Montserrat_400Regular, Montserrat_700Bold });
+  const isLandscape = useIsLandscape();
 
   const onFinish = (rounds: number) => {
     setIsGameOver(true);
@@ -38,11 +40,24 @@ const App = () => {
   };
 
   let screen = <Start onConfirm={setUserNumber} />;
+
   if (userNumber != null)
-    screen = <Game userNumber={userNumber} onFinish={onFinish} />;
+    screen = (
+      <Game
+        userNumber={userNumber}
+        onFinish={onFinish}
+        isLandscape={isLandscape}
+      />
+    );
+
   if (isGameOver && userNumber != null)
     screen = (
-      <GameOver userNumber={userNumber} rounds={rounds} resetGame={resetGame} />
+      <GameOver
+        userNumber={userNumber}
+        rounds={rounds}
+        resetGame={resetGame}
+        isLandscape={isLandscape}
+      />
     );
 
   useEffect(() => {

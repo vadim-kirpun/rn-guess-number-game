@@ -21,9 +21,12 @@ import themedStyles from './Game.styles';
 interface IGame {
   userNumber: number;
   onFinish: (rounds: number) => void;
+  isLandscape: boolean;
 }
 
-const Game = ({ userNumber, onFinish }: IGame) => {
+const Game = (props: IGame) => {
+  const { userNumber, onFinish, isLandscape } = props;
+
   const min = useRef(1);
   const max = useRef(100);
 
@@ -35,7 +38,7 @@ const Game = ({ userNumber, onFinish }: IGame) => {
   );
 
   const styles = useStyleSheet(themedStyles);
-  const { top, bottom } = useSafeAreaInsets();
+  const { top, bottom, left, right } = useSafeAreaInsets();
 
   const onNextGuess = (isHigher: boolean) => {
     const isWrongPress =
@@ -65,29 +68,59 @@ const Game = ({ userNumber, onFinish }: IGame) => {
     setRounds((prev) => [{ round: prev.length + 1, guess: newGuess }, ...prev]);
   };
 
+  const numberContainer = <NumberContainer>{currentGuess}</NumberContainer>;
+
+  const buttonLeft = (
+    <Button
+      onPress={() => onNextGuess(false)}
+      accessoryLeft={(props) => <Icon {...props} name="minus-outline" />}
+    />
+  );
+
+  const buttonRight = (
+    <Button
+      onPress={() => onNextGuess(true)}
+      accessoryLeft={(props) => <Icon {...props} name="plus-outline" />}
+    />
+  );
+
   return (
-    <View style={[styles.container, { paddingTop: top + 16 }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          paddingTop: top + 16,
+          paddingLeft: left + 16,
+          paddingRight: right + 16,
+        },
+      ]}
+    >
       <Text category="h1" style={{ marginBottom: 32 }}>
         Opponent&apos;s Guess
       </Text>
 
-      <NumberContainer>{currentGuess}</NumberContainer>
+      {isLandscape && (
+        <View style={styles.landscapeActions}>
+          {buttonLeft}
+          <View style={{ marginHorizontal: 16 }}>{numberContainer}</View>
+          {buttonRight}
+        </View>
+      )}
 
-      <View style={styles.higherOrLower}>
-        <Text category="h4">Higher or lower?</Text>
+      {!isLandscape && (
+        <>
+          {numberContainer}
 
-        <ButtonGroup size="giant" style={{ marginTop: 16 }}>
-          <Button
-            onPress={() => onNextGuess(false)}
-            accessoryLeft={(props) => <Icon {...props} name="minus-outline" />}
-          />
+          <View style={styles.higherOrLower}>
+            <Text category="h4">Higher or lower?</Text>
 
-          <Button
-            onPress={() => onNextGuess(true)}
-            accessoryLeft={(props) => <Icon {...props} name="plus-outline" />}
-          />
-        </ButtonGroup>
-      </View>
+            <ButtonGroup size="giant" style={{ marginTop: 16 }}>
+              {buttonLeft}
+              {buttonRight}
+            </ButtonGroup>
+          </View>
+        </>
+      )}
 
       <List
         data={rounds}
